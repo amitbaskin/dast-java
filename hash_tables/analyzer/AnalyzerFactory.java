@@ -1,17 +1,20 @@
-package hash_tables;
+package hash_tables.analyzer;
+
+import hash_tables.*;
+import hash_tables.dast.*;
 
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.TreeSet;
 
 /**
- * A factory for the sets involved in the hash_tables.SimpleSetPerformanceAnalyzer class tests.
+ * A factory for the sets involved in the hash_tables.analyzer.SimpleSetPerformanceAnalyzer class tests.
  */
 public class AnalyzerFactory {
 
     // The names of the classes of the different sets
-    private static final String OPEN_CLASS = "hash_tables.OpenHashSet";
-    private static final String CLOSED_CLASS = "hash_tables.ClosedHashSet";
+    private static final String OPEN_CLASS = "hash_tables.dast.OpenHashSet";
+    private static final String CLOSED_CLASS = "hash_tables.dast.ClosedHashSet";
     private static final String TREE_CLASS = "TreeSet";
     private static final String LINKED_CLASS = "LinkedList";
     private static final String HASH_CLASS = "HashSet";

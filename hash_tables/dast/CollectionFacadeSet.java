@@ -1,4 +1,4 @@
-package hash_tables;
+package hash_tables.dast;
 
 import java.util.Collection;
 import java.util.TreeSet;

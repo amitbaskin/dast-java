@@ -1,4 +1,4 @@
-package hash_tables;
+package hash_tables.dast;
 
 /**
  * General interface for a set

@@ -6,15 +6,15 @@ amit.baskin
 =============================
 =      File description     =
 =============================
-hash_tables.SimpleHashSet.java - A superclass for implementations of
-hash-sets implementing the hash_tables.SimpleSet interface.
-hash_tables.OpenHashSet.java - A hash-set based on chaining.
-hash_tables.ClosedHashSet.java - A hash-set based on closed-hashing with quadratic probing.
-hash_tables.LinkedListWrapper.java - Wraps a LinkedList object in order to be able to
+hash_tables.dast.SimpleHashSet.java - A superclass for implementations of
+hash-sets implementing the hash_tables.dast.SimpleSet interface.
+hash_tables.dast.OpenHashSet.java - A hash-set based on chaining.
+hash_tables.dast.ClosedHashSet.java - A hash-set based on closed-hashing with quadratic probing.
+hash_tables.dast.LinkedListWrapper.java - Wraps a LinkedList object in order to be able to
 have an array of linked lists.
-hash_tables.CollectionFacadeSet.java - Wraps an underlying Collection and serves to
+hash_tables.dast.CollectionFacadeSet.java - Wraps an underlying Collection and serves to
 both simplify its API and give it a common type with the implemented SimpleHashSets.
-hash_tables.SimpleSetPerformanceAnalyzer.java - Has a main method that measures the run-times of
+hash_tables.analyzer.SimpleSetPerformanceAnalyzer.java - Has a main method that measures the run-times of
 constructing java's sets from given data and searching for 
 elements in it versus doing so with the sets I wrote for this ex4.
 Running the main method should be done by inserting the desired tests in 
@@ -29,14 +29,14 @@ only for a specific data structure, then it should be given as an argument such 
 the first word of the data structure should be written and right after that 
 the number of the test, e.g. "hash3" would mean to run test number 3 on the HashSet data structure. 
 In addition it is possible to run tests only by the data structure, 
-e.g. "open" would run all the tests on the hash_tables.OpenHashSet data structure.
-hash_tables.SimpleSetWrapper.java - Wraps a hash_tables.SimpleSet object so it would hold its original set,
+e.g. "open" would run all the tests on the hash_tables.dast.OpenHashSet data structure.
+hash_tables.dast.SimpleSetWrapper.java - Wraps a hash_tables.dast.SimpleSet object so it would hold its original set,
 the type of class of its set, the data it should be constructed from and 
 the name of this data. It is used for the tests in the 
-hash_tables.SimpleSetPerformanceAnalyzer class.
-hash_tables.AnalyzerFactory.java - A factory for the sets involved in the
-hash_tables.SimpleSetPerformanceAnalyzer class tests.
-hash_tables.AnalyzerTests.java - Represents a test in the hash_tables.SimpleSetPerformanceAnalyzer class.
+hash_tables.analyzer.SimpleSetPerformanceAnalyzer class.
+hash_tables.analyzer.AnalyzerFactory.java - A factory for the sets involved in the
+hash_tables.analyzer.SimpleSetPerformanceAnalyzer class tests.
+hash_tables.analyzer.AnalyzerTests.java - Represents a test in the hash_tables.analyzer.SimpleSetPerformanceAnalyzer class.
 
 =============================
 =          Design           =
@@ -46,9 +46,9 @@ hash_tables.AnalyzerTests.java - Represents a test in the hash_tables.SimpleSetP
 =============================
 =  Implementation details   =
 =============================
-hash_tables.OpenHashSet Table - I created the hash_tables.LinkedListWrapper class in order to
+hash_tables.dast.OpenHashSet Table - I created the hash_tables.dast.LinkedListWrapper class in order to
 wraps a LinkedList object in order to be able to have an array of linked lists.
-Deletion mechanism in hash_tables.ClosedHashSet - I created a flag table in order to
+Deletion mechanism in hash_tables.dast.ClosedHashSet - I created a flag table in order to
 to indicate for each cell if an item has been deleted from it,
 this way I my code could know if to keep looking for an item it was searching for
 while it encountered null in a cell that corresponded to its clamped index.
@@ -63,26 +63,26 @@ each data structure and in what events.
 As it would become apparent in my discussion, in terms of time efficiency,
 Java's built in HashSet is by far the most efficient data structure of all the data structures
 tested in this exercise.
-hash_tables.OpenHashSet bad results for data1.txt - Initializing with data1 but
+hash_tables.dast.OpenHashSet bad results for data1.txt - Initializing with data1 but
 relatively even worse while initializing with data2 - the worst result in that case.
-hash_tables.ClosedHashSet bad results for data1.txt - Initializing with data1 - the worst result
+hash_tables.dast.ClosedHashSet bad results for data1.txt - Initializing with data1 - the worst result
 in that case. Furthermore it had relatively bad results while looking for the different items,
 whether it was initialized with data1 or data2.
-hash_tables.OpenHashSet strengths - relatively it did pretty well in looking for the different items,
+hash_tables.dast.OpenHashSet strengths - relatively it did pretty well in looking for the different items,
 frequently even second best. Therefore in a scenario of moslty searching for items,
-then it is not bad using an hash_tables.OpenHashSet.
-hash_tables.OpenHashSet weaknesses - It is pretty slow with the initializations.
+then it is not bad using an hash_tables.dast.OpenHashSet.
+hash_tables.dast.OpenHashSet weaknesses - It is pretty slow with the initializations.
 If the different items to hash have the same hash code it is second worst
 and if the different items to hash have a more natural mixture in the sense of their hash codes,
 it was definitely the worst. Meaning that in scenario which needs many initializations,
-then it not a good idea to use an hash_tables.OpenHashSet.
-hash_tables.ClosedHashSet strengths - It did pretty well in the initialization with data2,
+then it not a good idea to use an hash_tables.dast.OpenHashSet.
+hash_tables.dast.ClosedHashSet strengths - It did pretty well in the initialization with data2,
 it came around the second best. This means that if it hashes items which have quite
 a natural mixture of hash codes then it does well, and in fact statistically that is the case,
-so in general if many hashings are involved then it is not bad using a hash_tables.ClosedHashSet.
-hash_tables.ClosedHashSet weaknesses - as been said above, it is pretty weak in the searching aspect.
+so in general if many hashings are involved then it is not bad using a hash_tables.dast.ClosedHashSet.
+hash_tables.dast.ClosedHashSet weaknesses - as been said above, it is pretty weak in the searching aspect.
 Meaning that in scenario in which many searches are required then it better not using 
-a hash_tables.ClosedHashSet.
+a hash_tables.dast.ClosedHashSet.
 TreeSet strengths - Initializing with either data1 or data2 is second best.
 Meaning if it is a scenario of many initializations, then it
 is not bad using TreeSet.

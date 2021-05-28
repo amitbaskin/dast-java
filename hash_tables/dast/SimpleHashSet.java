@@ -1,7 +1,7 @@
-package hash_tables;
+package hash_tables.dast;
 
 /**
- * A superclass for implementations of hash-sets implementing the hash_tables.SimpleSet interface.
+ * A superclass for implementations of hash-sets implementing the hash_tables.dast.SimpleSet interface.
  */
 abstract public class SimpleHashSet implements SimpleSet {
 

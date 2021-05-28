@@ -1,4 +1,6 @@
-package hash_tables;
+package hash_tables.analyzer;
+
+import hash_tables.dast.SimpleSetWrapper;
 
 /**
  * Has a main method that measures the run-times of constructing java's sets from given data and
@@ -12,7 +14,7 @@ package hash_tables;
  * specific data structure, then it should be given as an argument such that the first word of the data
  * structure should be written and right after that the number of the test, e.g. "hash3" would mean to run
  * test number 3 on the HashSet data structure. In addition it is possible to run tests only by the data
- * structure, e.g. "open" would run all the tests on the hash_tables.OpenHashSet data structure.
+ * structure, e.g. "open" would run all the tests on the hash_tables.dast.OpenHashSet data structure.
  */
 public class SimpleSetPerformanceAnalyzer {
 
@@ -87,19 +89,19 @@ public class SimpleSetPerformanceAnalyzer {
     // data1 and data2 which are mentioned in the comments below represent the data files that were given
     // in the ex4 supplied files
 
-    private static final SimpleSetWrapper open1 = // Represents an hash_tables.OpenHashSet with data1
+    private static final SimpleSetWrapper open1 = // Represents an hash_tables.dast.OpenHashSet with data1
             AnalyzerFactory.initializeEmptyWrappedSet(AnalyzerFactory.getOpenClass(),
                     AnalyzerFactory.getDataArray1(), AnalyzerFactory.getData1Name());
 
-    private static final SimpleSetWrapper open2 = // Represents an hash_tables.OpenHashSet with data2
+    private static final SimpleSetWrapper open2 = // Represents an hash_tables.dast.OpenHashSet with data2
             AnalyzerFactory.initializeEmptyWrappedSet(AnalyzerFactory.getOpenClass(),
             AnalyzerFactory.getDataArray2(), AnalyzerFactory.getData2Name());
 
-    private static final SimpleSetWrapper closed1 = // Represents a hash_tables.ClosedHashSet with data1
+    private static final SimpleSetWrapper closed1 = // Represents a hash_tables.dast.ClosedHashSet with data1
             AnalyzerFactory.initializeEmptyWrappedSet(AnalyzerFactory.getClosedClass(),
             AnalyzerFactory.getDataArray1(), AnalyzerFactory.getData1Name());
 
-    private static final SimpleSetWrapper closed2 = // Represents a hash_tables.ClosedHashSet with data2
+    private static final SimpleSetWrapper closed2 = // Represents a hash_tables.dast.ClosedHashSet with data2
             AnalyzerFactory.initializeEmptyWrappedSet(AnalyzerFactory.getClosedClass(),
             AnalyzerFactory.getDataArray2(), AnalyzerFactory.getData2Name());
 
@@ -127,7 +129,7 @@ public class SimpleSetPerformanceAnalyzer {
             AnalyzerFactory.initializeEmptyWrappedSet(AnalyzerFactory.getHashClass(),
             AnalyzerFactory.getDataArray2(), AnalyzerFactory.getData2Name());
 
-    // The following hash_tables.AnalyzerTests objects represents specific test. The fields are named according to the
+    // The following hash_tables.analyzer.AnalyzerTests objects represents specific test. The fields are named according to the
     // set that is involved in the test together with the number of the test as was described the ex4
     // description
     private static final AnalyzerTests OPEN1_TEST = new AnalyzerTests(open1, OPEN1, OPEN_TYPE, null);
@@ -352,7 +354,7 @@ public class SimpleSetPerformanceAnalyzer {
      * specific data structure, then it should be given as an argument such that the first word of the data
      * structure should be written and right after that the number of the test, e.g. "hash3" would mean to run
      * test number 3 on the HashSet data structure. In addition it is possible to run tests only by the data
-     * structure, e.g. "open" would run all the tests on the hash_tables.OpenHashSet data structure.
+     * structure, e.g. "open" would run all the tests on the hash_tables.dast.OpenHashSet data structure.
      * @param args The arguments given
      */
     public static void main(String[] args) {

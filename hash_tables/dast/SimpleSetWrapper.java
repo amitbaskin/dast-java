@@ -1,9 +1,11 @@
-package hash_tables;
+package hash_tables.dast;
+
+import hash_tables.analyzer.AnalyzerFactory;
 
 /**
- * Wraps a hash_tables.SimpleSet object so it would hold its original set, the type of class of its set, the data it
+ * Wraps a hash_tables.dast.SimpleSet object so it would hold its original set, the type of class of its set, the data it
  * should be constructed from and the name of this data. It is used for the tests in the
- * hash_tables.SimpleSetPerformanceAnalyzer class.
+ * hash_tables.analyzer.SimpleSetPerformanceAnalyzer class.
  */
 public class SimpleSetWrapper {
 
@@ -19,7 +21,7 @@ public class SimpleSetWrapper {
      * @param myData The data it should be constructed from
      * @param myDataName The name of the data it should be constructed from
      */
-    SimpleSetWrapper(SimpleSet mySet, String myClass, String[] myData, String myDataName){
+    public SimpleSetWrapper(SimpleSet mySet, String myClass, String[] myData, String myDataName){
         this.mySet = mySet;
         this.myClass = myClass;
         this.myData = myData;

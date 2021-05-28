@@ -1,7 +1,9 @@
-package hash_tables;
+package hash_tables.analyzer;
+
+import hash_tables.dast.SimpleSetWrapper;
 
 /**
- * Represents a test in the hash_tables.SimpleSetPerformanceAnalyzer class.
+ * Represents a test in the hash_tables.analyzer.SimpleSetPerformanceAnalyzer class.
  */
 public class AnalyzerTests {
     private final SimpleSetWrapper myWrappedSet; // The set involved in the test

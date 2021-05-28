@@ -1,4 +1,4 @@
-package hash_tables;
+package hash_tables.dast;
 
 import java.lang.*;
 import java.util.Arrays;
