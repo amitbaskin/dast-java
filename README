@@ -1,0 +1,99 @@
+amit.baskin
+
+
+
+
+=============================
+=      File description     =
+=============================
+hash_tables.SimpleHashSet.java - A superclass for implementations of
+hash-sets implementing the hash_tables.SimpleSet interface.
+hash_tables.OpenHashSet.java - A hash-set based on chaining.
+hash_tables.ClosedHashSet.java - A hash-set based on closed-hashing with quadratic probing.
+hash_tables.LinkedListWrapper.java - Wraps a LinkedList object in order to be able to
+have an array of linked lists.
+hash_tables.CollectionFacadeSet.java - Wraps an underlying Collection and serves to
+both simplify its API and give it a common type with the implemented SimpleHashSets.
+hash_tables.SimpleSetPerformanceAnalyzer.java - Has a main method that measures the run-times of
+constructing java's sets from given data and searching for 
+elements in it versus doing so with the sets I wrote for this ex4.
+Running the main method should be done by inserting the desired tests in 
+the arguments of the method. Any number of arguments can be inserted, 
+and a valid argument is a string which equals to one of the tests that are stated in
+the test fields. An argument which is not valid, shall be ignored. 
+In order to execute a test as was described in the ex4 description, 
+then the correct argument for that should be the string "test" and the number of the 
+test from 1 to 6 right after the string. 
+Furthermore, in order to execute a specific test, i.e. of the tests between 1 to 6 but 
+only for a specific data structure, then it should be given as an argument such that 
+the first word of the data structure should be written and right after that 
+the number of the test, e.g. "hash3" would mean to run test number 3 on the HashSet data structure. 
+In addition it is possible to run tests only by the data structure, 
+e.g. "open" would run all the tests on the hash_tables.OpenHashSet data structure.
+hash_tables.SimpleSetWrapper.java - Wraps a hash_tables.SimpleSet object so it would hold its original set,
+the type of class of its set, the data it should be constructed from and 
+the name of this data. It is used for the tests in the 
+hash_tables.SimpleSetPerformanceAnalyzer class.
+hash_tables.AnalyzerFactory.java - A factory for the sets involved in the
+hash_tables.SimpleSetPerformanceAnalyzer class tests.
+hash_tables.AnalyzerTests.java - Represents a test in the hash_tables.SimpleSetPerformanceAnalyzer class.
+
+=============================
+=          Design           =
+=============================
+
+
+=============================
+=  Implementation details   =
+=============================
+hash_tables.OpenHashSet Table - I created the hash_tables.LinkedListWrapper class in order to
+wraps a LinkedList object in order to be able to have an array of linked lists.
+Deletion mechanism in hash_tables.ClosedHashSet - I created a flag table in order to
+to indicate for each cell if an item has been deleted from it,
+this way I my code could know if to keep looking for an item it was searching for
+while it encountered null in a cell that corresponded to its clamped index.
+
+=============================
+=    Answers to questions   =
+=============================
+In the following I will discuss the results of the different tests.
+I will compare between these results by going over each data structure 
+strengths and weaknesses and furthermore I will discuss the preference of
+each data structure and in what events.
+As it would become apparent in my discussion, in terms of time efficiency,
+Java's built in HashSet is by far the most efficient data structure of all the data structures
+tested in this exercise.
+hash_tables.OpenHashSet bad results for data1.txt - Initializing with data1 but
+relatively even worse while initializing with data2 - the worst result in that case.
+hash_tables.ClosedHashSet bad results for data1.txt - Initializing with data1 - the worst result
+in that case. Furthermore it had relatively bad results while looking for the different items,
+whether it was initialized with data1 or data2.
+hash_tables.OpenHashSet strengths - relatively it did pretty well in looking for the different items,
+frequently even second best. Therefore in a scenario of moslty searching for items,
+then it is not bad using an hash_tables.OpenHashSet.
+hash_tables.OpenHashSet weaknesses - It is pretty slow with the initializations.
+If the different items to hash have the same hash code it is second worst
+and if the different items to hash have a more natural mixture in the sense of their hash codes,
+it was definitely the worst. Meaning that in scenario which needs many initializations,
+then it not a good idea to use an hash_tables.OpenHashSet.
+hash_tables.ClosedHashSet strengths - It did pretty well in the initialization with data2,
+it came around the second best. This means that if it hashes items which have quite
+a natural mixture of hash codes then it does well, and in fact statistically that is the case,
+so in general if many hashings are involved then it is not bad using a hash_tables.ClosedHashSet.
+hash_tables.ClosedHashSet weaknesses - as been said above, it is pretty weak in the searching aspect.
+Meaning that in scenario in which many searches are required then it better not using 
+a hash_tables.ClosedHashSet.
+TreeSet strengths - Initializing with either data1 or data2 is second best.
+Meaning if it is a scenario of many initializations, then it
+is not bad using TreeSet.
+TreeSet weaknesses - ContainsTest are relatively slow, meaning that in a scenario of many searching, 
+a TreeSet is not a good idea.
+LinkedList strengths - Did pretty well on the contains test, meaning in a scenario of many
+searchings, using a LinkedList is not too bad.
+LinkedList weaknesses - Initializations are pretty slow, meaning in a scenario of many
+initializations, better not use LinkedList.
+HashSet strengths - This one really excelled in every single test.
+The conclusion is that if time efficiency is what one is looking for,
+then one should definitely go for the HashSet data structure.
+HashSet weaknesses - There are no apparent weaknesses according to these tests.
+Perhaps on the level of functionality there are reasons to prefer other data structures.
