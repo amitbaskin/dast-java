@@ -16,7 +16,7 @@ public class OpenHashSet extends SimpleHashSet {
     public OpenHashSet() {
         super();
         hashTable = new LinkedListWrapper[INITIAL_CAPACITY];
-        initializeTable(INITIAL_CAPACITY);
+        initializeTable(INITIAL_CAPACITY, hashTable);
     }
 
     /**
@@ -27,7 +27,7 @@ public class OpenHashSet extends SimpleHashSet {
     public OpenHashSet(float upperLoadFactor, float lowerLoadFactor) {
         super(upperLoadFactor, lowerLoadFactor);
         hashTable = new LinkedListWrapper[INITIAL_CAPACITY];
-        initializeTable(INITIAL_CAPACITY);
+        initializeTable(INITIAL_CAPACITY, hashTable);
     }
 
     /**
@@ -40,7 +40,7 @@ public class OpenHashSet extends SimpleHashSet {
         super(upperLoadFactor, lowerLoadFactor);
         hashTable = new LinkedListWrapper[capacity];
         this.capacity = capacity;
-        initializeTable(capacity);
+        initializeTable(capacity, hashTable);
     }
 
     /**
@@ -52,7 +52,7 @@ public class OpenHashSet extends SimpleHashSet {
     public OpenHashSet(java.lang.String[] data) {
         super();
         hashTable = new LinkedListWrapper[INITIAL_CAPACITY];
-        initializeTable(INITIAL_CAPACITY);
+        initializeTable(INITIAL_CAPACITY, hashTable);
         for (String value : data) {
             this.add(value);
         }
@@ -180,7 +180,7 @@ public class OpenHashSet extends SimpleHashSet {
      * Initializes the hash table.
      * @param capacity The capacity to give the hash table
      */
-    private void initializeTable(int capacity){
+    private static void initializeTable(int capacity, LinkedListWrapper[] hashTable){
         for(int i=0; i<capacity; i++){
             hashTable[i] = new LinkedListWrapper();
         }
