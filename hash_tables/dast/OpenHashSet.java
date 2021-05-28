@@ -77,12 +77,12 @@ public class OpenHashSet extends SimpleHashSet {
             increaseSize();
 
             if (isEnlargeTable()) {
-                reconstructTable((int) (ENLARGEMENT_FACTOR * capacity()), null);
+                reconstructTable((int) (ENLARGEMENT_FACTOR * capacity()));
             }
 
             int cellIndex = clamp(newValue.hashCode());
             LinkedListWrapper cell = hashTable[cellIndex];
-            LinkedList<java.lang.String> cellLinkedList = cell.getMyLinkedList();
+            LinkedList<String> cellLinkedList = cell.getMyLinkedList();
             cellLinkedList.addFirst(newValue);
 
             return true;
@@ -103,7 +103,7 @@ public class OpenHashSet extends SimpleHashSet {
 
         int suspectedIndex = clamp(searchVal.hashCode());
         LinkedListWrapper suspectedCell = hashTable[suspectedIndex];
-        LinkedList<java.lang.String> cellLinkedList = suspectedCell.getMyLinkedList();
+        LinkedList<String> cellLinkedList = suspectedCell.getMyLinkedList();
 
         return cellLinkedList.contains(searchVal);
 }
@@ -116,12 +116,11 @@ public class OpenHashSet extends SimpleHashSet {
     @Override
     public boolean delete(String toDelete) {
         int suspectedIndex = clamp(toDelete.hashCode());
-        LinkedList<java.lang.String> suspectedCell = hashTable[suspectedIndex].getMyLinkedList();
+        LinkedList<String> suspectedCell = hashTable[suspectedIndex].getMyLinkedList();
 
-        if(suspectedCell.contains(toDelete)){
+        if(suspectedCell.remove(toDelete)){
             decreaseSize();
         }
-
         else return false;
 
         if (isShrinkTable()) {
@@ -129,12 +128,9 @@ public class OpenHashSet extends SimpleHashSet {
             if(newCapacity == 0){
                 newCapacity = 1;
             }
-
-            reconstructTable(newCapacity, toDelete);
-            return true;
+            reconstructTable(newCapacity);
         }
-
-        else return suspectedCell.remove(toDelete);
+        return true;
     }
 
     /**
@@ -150,11 +146,10 @@ public class OpenHashSet extends SimpleHashSet {
     /**
      * Reconstructs the hash table with the given capacity and without the item toIgnore.
      * @param capacity The new capacity
-     * @param toIgnore The item to ignore while constructing
      */
-    private void reconstructTable ( int capacity, String toIgnore){
+    private void reconstructTable (int capacity){
 
-        if(capacity == 0 & toIgnore == null){
+        if (capacity == 0){
             return;
         }
 
@@ -166,9 +161,7 @@ public class OpenHashSet extends SimpleHashSet {
             }
 
             for (String currentValue : cell.getMyLinkedList()) {
-                if (!currentValue.equals(toIgnore)) {
                     newHashSet.add(currentValue);
-                }
             }
         }
 
