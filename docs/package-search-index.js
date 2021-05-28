@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"hash_tables"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"hash_tables"},{"l":"hash_tables.analyzer"},{"l":"hash_tables.dast"}];updateSearchResults();
