@@ -77,18 +77,18 @@ public class ClosedHashSet extends SimpleHashSet {
             return false;
         }
 
-        if (this.contains(newValue)) {
-        return false;
+        int index = containedIndex(newValue);
+        if (index == -1) {
+            return false;
         }
 
         increaseSize();
 
         if (isEnlargeTable()) {
-            reconstructTable((int) (ENLARGEMENT_FACTOR * capacity()), null);
+            reconstructTable((int) (ENLARGEMENT_FACTOR * capacity()));
         }
 
-        int clampedIndex = clamp(newValue.hashCode());
-        hashTable[clampedIndex] = newValue;
+        hashTable[index] = newValue;
 
         return true;
     }
@@ -144,17 +144,19 @@ public class ClosedHashSet extends SimpleHashSet {
             return false;
         }
 
+        hashTable[suspectedIndex] = null;
+        deletionFlagTable[suspectedIndex] = true;
         decreaseSize();
 
         if (isShrinkTable()) {
             int newCapacity = (int) (SHRINKAGE_FACTOR * capacity());
 
             if (newCapacity > 0) {
-                reconstructTable(newCapacity, toDelete);
+                reconstructTable(newCapacity);
             }
 
             else {
-                reconstructTable(1, toDelete);
+                reconstructTable(1);
             }
         }
 
@@ -192,24 +194,17 @@ public class ClosedHashSet extends SimpleHashSet {
     }
 
     /**
-     * Reconstructs the hash table with the given capacity and without the item toIgnore.
+     * Reconstructs the hash table with the given capacity
      * @param capacity The new capacity
-     * @param toIgnore The item to ignore while constructing
      */
-    private void reconstructTable(int capacity, String toIgnore) {
+    private void reconstructTable(int capacity) {
         ClosedHashSet newHashSet = new ClosedHashSet(capacity, getUpperLoadFactor(), getLowerLoadFactor());
 
         for (String value : this.hashTable) {
             if (value != null) {
-                if (toIgnore == null) {
-                    newHashSet.add(value);
-
-                } else if (!value.equals(toIgnore)) {
-                    newHashSet.add(value);
-                }
+                newHashSet.add(value);
             }
         }
-
         this.setCapacity(newHashSet.capacity());
         this.hashTable = newHashSet.hashTable;
         this.deletionFlagTable = newHashSet.deletionFlagTable;

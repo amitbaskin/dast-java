@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A utilities class for ex4 in oop.
+ * Utilities
  *
  */
 public class Utils {

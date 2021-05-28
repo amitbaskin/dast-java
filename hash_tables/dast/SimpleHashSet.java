@@ -3,7 +3,7 @@ package hash_tables.dast;
 /**
  * A superclass for implementations of hash-sets implementing the hash_tables.dast.SimpleSet interface.
  */
-abstract public class SimpleHashSet implements SimpleSet {
+public abstract class SimpleHashSet implements SimpleSet {
 
     /**
      * The default upper load factor of a newly created hash set
@@ -36,8 +36,7 @@ abstract public class SimpleHashSet implements SimpleSet {
     private int tableSize; // The amount of elements in the set
 
     /**
-     * Constructs a new hash set with the default capacities given in DEFAULT_LOWER_CAPACITY and
-     * DEFAULT_HIGHER_CAPACITY.
+     * Constructs a new hash set with the defaults stated above
      */
     protected SimpleHashSet(){
         this.capacity = INITIAL_CAPACITY;
@@ -47,7 +46,7 @@ abstract public class SimpleHashSet implements SimpleSet {
     }
 
     /**
-     * Constructs a new hash set with capacity INITIAL_CAPACITY given in lowerLoadFactor and upperLoadFactor.
+     * Constructs a new hash set with according to the input parameters
      * @param upperLoadFactor The upper load factor to initialize the set with
      * @param lowerLoadFactor The lower load factor to initialize the set with
      */
@@ -110,27 +109,6 @@ abstract public class SimpleHashSet implements SimpleSet {
     protected float getUpperLoadFactor(){
         return upperLoadFactor;
     }
-
-    /**
-     * Add a specified element to the set if it's not already in it.
-     * @param newValue New value to add to the set
-     * @return False iff newValue already exists in the set
-     */
-    public abstract boolean add(String newValue);
-
-    /**
-     * Looks for a specified value in the set.
-     * @param searchVal Value to search for
-     * @return true iff searchVal is found in the set
-     */
-    public abstract boolean contains(String searchVal);
-
-    /**
-     * Remove the input element from the set.
-     * @param toDelete Value to delete
-     * @return true iff toDelete is found and deleted
-     */
-    public abstract boolean delete(String toDelete);
 
     /**
      * Returns the number of elements currently in the set.

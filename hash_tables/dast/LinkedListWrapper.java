@@ -7,12 +7,12 @@ import java.util.LinkedList;
  */
 public class LinkedListWrapper {
 
-    private final java.util.LinkedList<String> myLinkedList;
+    private final LinkedList<String> myLinkedList;
 
     /**
      * The default constructor.
      */
-    LinkedListWrapper(){
+    public LinkedListWrapper(){
         this.myLinkedList = new LinkedList<>();
     }
 
