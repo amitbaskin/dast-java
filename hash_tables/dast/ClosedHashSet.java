@@ -19,7 +19,7 @@ public class ClosedHashSet extends SimpleHashSet {
         super();
         hashTable = new String[INITIAL_CAPACITY];
         deletionFlagTable = new boolean[INITIAL_CAPACITY];
-        initializeFlagsTable();
+        initializeFlagsTable(deletionFlagTable);
     }
 
     /**
@@ -31,7 +31,7 @@ public class ClosedHashSet extends SimpleHashSet {
         super(upperLoadFactor, lowerLoadFactor);
         hashTable = new String[INITIAL_CAPACITY];
         deletionFlagTable = new boolean[INITIAL_CAPACITY];
-        initializeFlagsTable();
+        initializeFlagsTable(deletionFlagTable);
     }
 
     /**
@@ -44,8 +44,8 @@ public class ClosedHashSet extends SimpleHashSet {
         super(upperLoadFactor, lowerLoadFactor);
         hashTable = new String[capacity];
         deletionFlagTable = new boolean[capacity];
-        setCapacity(capacity);
-        initializeFlagsTable();
+        this.capacity = capacity;
+        initializeFlagsTable(deletionFlagTable);
     }
 
     /**
@@ -57,8 +57,8 @@ public class ClosedHashSet extends SimpleHashSet {
     public ClosedHashSet(String[] data) {
         super();
         deletionFlagTable = new boolean[INITIAL_CAPACITY];
+        initializeFlagsTable(deletionFlagTable);
         hashTable = new String[INITIAL_CAPACITY];
-        initializeFlagsTable();
         for (String value : data) {
             this.add(value);
         }
@@ -205,17 +205,17 @@ public class ClosedHashSet extends SimpleHashSet {
                 newHashSet.add(value);
             }
         }
-        this.setCapacity(newHashSet.capacity());
+        this.capacity = newHashSet.capacity();
         this.hashTable = newHashSet.hashTable;
         this.deletionFlagTable = newHashSet.deletionFlagTable;
-        initializeFlagsTable();
+        initializeFlagsTable(deletionFlagTable);
     }
 
     /**
      * Initializes the flag table of the hash table which indicates for each cell if an item has been
      * deleted from it.
      */
-    private void initializeFlagsTable() {
+    private static void initializeFlagsTable(boolean[] deletionFlagTable) {
         Arrays.fill(deletionFlagTable, false);
     }
 }

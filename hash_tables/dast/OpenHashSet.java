@@ -39,7 +39,7 @@ public class OpenHashSet extends SimpleHashSet {
     private OpenHashSet(int capacity, float upperLoadFactor, float lowerLoadFactor) {
         super(upperLoadFactor, lowerLoadFactor);
         hashTable = new LinkedListWrapper[capacity];
-        setCapacity(capacity);
+        this.capacity = capacity;
         initializeTable(capacity);
     }
 
@@ -172,7 +172,7 @@ public class OpenHashSet extends SimpleHashSet {
             }
         }
 
-        this.setCapacity(newHashSet.capacity());
+        this.capacity = newHashSet.capacity();
         this.hashTable = newHashSet.hashTable;
     }
 

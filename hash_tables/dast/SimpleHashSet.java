@@ -30,7 +30,11 @@ public abstract class SimpleHashSet implements SimpleSet {
      */
     protected double SHRINKAGE_FACTOR = 0.5;
 
-    private int capacity; // The amount of cells in the set
+    /**
+     * The amount of cells in the set
+     */
+    protected int capacity;
+
     private final float upperLoadFactor; // The upper load factor of the set
     private final float lowerLoadFactor; // The lower load factor of the set
     private int tableSize; // The amount of elements in the set
@@ -77,14 +81,6 @@ public abstract class SimpleHashSet implements SimpleSet {
      */
     public int capacity(){
         return capacity;
-    }
-
-    /**
-     * Sets the capacity of the set to be capacityToSet.
-     * @param capacityToSet The capacity to set
-     */
-    protected void setCapacity(int capacityToSet){
-        capacity = capacityToSet;
     }
 
     /**
