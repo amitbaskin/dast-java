@@ -1,5 +1,8 @@
 package hash_tables;
 
+/**
+ * General interface for a set
+ */
 public interface SimpleSet {
 	/**
 	 * Add a specified element to the set if it's not already in it.
@@ -22,6 +25,6 @@ public interface SimpleSet {
 	/**
 	 * @return The number of elements currently in the set
 	 */
-	public int size();
+	int size();
 
 }

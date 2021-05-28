@@ -5,16 +5,30 @@ package hash_tables;
  */
 abstract public class SimpleHashSet implements SimpleSet {
 
-    protected static float DEFAULT_HIGHER_CAPACITY = 0.75f; // The default upper load factor of a
-    // newly created hash set
-    protected static float DEFAULT_LOWER_CAPACITY = 0.25f; // The default lower load factor of a
-    // newly created hash set
-    protected static int INITIAL_CAPACITY = 16; // Describes the default capacity of a newly created hash set
+    /**
+     * The default upper load factor of a newly created hash set
+     */
+    protected static float DEFAULT_HIGHER_CAPACITY = 0.75f;
 
-    protected double ENLARGEMENT_FACTOR = 2; // The factor in which to increase the capacity in case the
-    // set should enlarge
-    protected double SHRINKAGE_FACTOR = 0.5; // The factor in which to decrease the capacity in case the
-    // set should shrink
+    /**
+     * The default lower load factor of a newly created hash set
+     */
+    protected static float DEFAULT_LOWER_CAPACITY = 0.25f;
+
+    /**
+     * Describes the default capacity of a newly created hash set
+     */
+    protected static int INITIAL_CAPACITY = 16;
+
+    /**
+     * The factor in which to increase the capacity in case the set should enlarge
+     */
+    protected double ENLARGEMENT_FACTOR = 2;
+
+    /**
+     * The factor in which to decrease the capacity in case the set should shrink
+     */
+    protected double SHRINKAGE_FACTOR = 0.5;
 
     private int capacity; // The amount of cells in the set
     private final float upperLoadFactor; // The upper load factor of the set
@@ -44,8 +58,10 @@ abstract public class SimpleHashSet implements SimpleSet {
         this.tableSize = 0;
     }
 
+    /**
+     * Prints for the analyzer tests
+     */
     public void testPrints() {
-        // The following prints are for the analyzer tests
         if (size() % 10000 == 0) {
             System.out.println("size()");
             System.out.println(size());
