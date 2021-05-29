@@ -1,20 +1,12 @@
 package hash_tables.dast;
 
 import java.util.Collection;
-import java.util.TreeSet;
 
 /**
  * Wraps an underlying Collection and serves to both simplify its API and give it a common type with the
  * implemented SimpleHashSets.
  */
 public record CollectionFacadeSet(Collection<String> collection) implements SimpleSet {
-
-    /**
-     * Creates a new facade wrapping the specified collection.
-     *
-     * @param collection The Collection to wrap
-     */
-    public CollectionFacadeSet {}
 
     /**
      * Adds a specified element to the set if it's not already in it.

@@ -4,11 +4,11 @@ import hash_tables.dast.SimpleSetWrapper;
 
 /**
  * Has a main method that measures the run-times of constructing java's sets from given data and
- * searching for elements in it versus doing so with the sets I wrote for this ex4.
+ * searching for elements in it versus doing so with the sets I wrote for this ex.
  * Running the main method should be done by inserting the desired tests in the arguments of the method.
  * Any number of arguments can be inserted, and a valid argument is a string which equals to one of the test
  * that are stated in the test fields . An argument which is not valid, shall be ignored.
- * In order to execute a test as was described in the ex4 description, then the correct argument for that
+ * In order to execute a test as was described in the ex description, then the correct argument for that
  * should be the string "test" and the number of the test from 1 to 6 right after the string.
  * Furthermore, in order to execute a specific test, i.e. of the tests between 1 to 6 but only for a
  * specific data structure, then it should be given as an argument such that the first word of the data
@@ -33,7 +33,7 @@ public class SimpleSetPerformanceAnalyzer {
     private static final String TEST5 = "test5";
     private static final String TEST6 = "test6";
 
-    // names of specific tests
+    // Names of specific tests
     private static final String OPEN1 = "open1";
     private static final String OPEN2 = "open2";
     private static final String OPEN3 = "open3";
@@ -87,13 +87,13 @@ public class SimpleSetPerformanceAnalyzer {
     // for the contains tests of LinkedList
 
     // data1 and data2 which are mentioned in the comments below represent the data files that were given
-    // in the ex4 supplied files
+    // in the ex supplied files
 
-    private static final SimpleSetWrapper open1 = // Represents an hash_tables.dast.OpenHashSet with data1
+    private static final SimpleSetWrapper open1 = // Represents a hash_tables.dast.OpenHashSet with data1
             AnalyzerFactory.initializeEmptyWrappedSet(AnalyzerFactory.getOpenClass(),
                     AnalyzerFactory.getDataArray1(), AnalyzerFactory.getData1Name());
 
-    private static final SimpleSetWrapper open2 = // Represents an hash_tables.dast.OpenHashSet with data2
+    private static final SimpleSetWrapper open2 = // Represents a hash_tables.dast.OpenHashSet with data2
             AnalyzerFactory.initializeEmptyWrappedSet(AnalyzerFactory.getOpenClass(),
             AnalyzerFactory.getDataArray2(), AnalyzerFactory.getData2Name());
 
@@ -129,9 +129,9 @@ public class SimpleSetPerformanceAnalyzer {
             AnalyzerFactory.initializeEmptyWrappedSet(AnalyzerFactory.getHashClass(),
             AnalyzerFactory.getDataArray2(), AnalyzerFactory.getData2Name());
 
-    // The following hash_tables.analyzer.AnalyzerTests objects represents specific test. The fields are named according to the
-    // set that is involved in the test together with the number of the test as was described the ex4
-    // description
+    // The following hash_tables.analyzer.AnalyzerTests objects represents a specific test. The fields are
+    // named according to the set that is involved in the test together with the number of the test as was
+    // described the ex description
     private static final AnalyzerTests OPEN1_TEST = new AnalyzerTests(open1, OPEN1, OPEN_TYPE, null);
     private static final AnalyzerTests OPEN2_TEST = new AnalyzerTests(open2, OPEN2, OPEN_TYPE, null);
     private static final AnalyzerTests OPEN3_TEST = new AnalyzerTests(open1, OPEN3, OPEN_TYPE, STR1);

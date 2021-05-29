@@ -2,7 +2,6 @@ package hash_tables.analyzer;
 
 import hash_tables.*;
 import hash_tables.dast.*;
-
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.TreeSet;
@@ -134,7 +133,7 @@ public class AnalyzerFactory {
                                                              String dataName) {
         return switch (choice) {
             case OPEN_CLASS -> new SimpleSetWrapper(new OpenHashSet(), OPEN_CLASS, dataArray, dataName);
-            case CLOSED_CLASS -> new SimpleSetWrapper(new OpenHashSet(), CLOSED_CLASS, dataArray, dataName);
+            case CLOSED_CLASS -> new SimpleSetWrapper(new ClosedHashSet(), CLOSED_CLASS, dataArray, dataName);
             case TREE_CLASS -> new SimpleSetWrapper(javaSetFactory(TREE_CLASS), TREE_CLASS, dataArray,
                      dataName);
             case LINKED_CLASS -> new SimpleSetWrapper(javaSetFactory(LINKED_CLASS), LINKED_CLASS,

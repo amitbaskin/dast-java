@@ -67,8 +67,8 @@ public class OpenHashSet extends SimpleHashSet {
     public boolean add(String newValue) {
 
         // The following prints are for the analyzer tests
-
         testPrints();
+
         if (contains(newValue)) {
             return false;
         }
@@ -144,7 +144,7 @@ public class OpenHashSet extends SimpleHashSet {
     }
 
     /**
-     * Reconstructs the hash table with the given capacity and without the item toIgnore.
+     * Reconstructs the hash table with the given capacity
      * @param capacity The new capacity
      */
     private void reconstructTable (int capacity){
@@ -152,21 +152,15 @@ public class OpenHashSet extends SimpleHashSet {
         if (capacity == 0){
             return;
         }
-
         OpenHashSet newHashSet = new OpenHashSet(capacity, getUpperLoadFactor(), getLowerLoadFactor());
-
+        this.capacity = newHashSet.capacity();
+        this.hashTable = newHashSet.hashTable;
         for (LinkedListWrapper cell : this.hashTable) {
-            if(cell.getMyLinkedList().size() == 0){
-                continue;
-            }
-
             for (String currentValue : cell.getMyLinkedList()) {
                     newHashSet.add(currentValue);
             }
         }
 
-        this.capacity = newHashSet.capacity();
-        this.hashTable = newHashSet.hashTable;
     }
 
     /**
